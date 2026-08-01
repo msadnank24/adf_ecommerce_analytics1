@@ -1,0 +1,5 @@
+[
+	{"file_name": "customers.csv","folder_name": "customers"},
+	{"file_name": "sales.csv","folder_name": "sales"},
+	{"file_name": "sales_orders.csv","folder_name": "sales_orders"}
+]	
