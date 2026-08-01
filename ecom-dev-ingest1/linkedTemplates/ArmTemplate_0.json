@@ -1014,6 +1014,44 @@
 				"[concat(variables('factoryId'), '/datasets/ds_sales_orders_source')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sales_orders_adls')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/weekly_6am')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "metadata_driven_pipeline",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 7,
+						"startTime": "2026-08-01T11:50:00",
+						"timeZone": "GMT Standard Time",
+						"schedule": {
+							"minutes": [
+								15
+							],
+							"hours": [
+								6
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/metadata_driven_pipeline')]"
+			]
 		}
 	]
 }
